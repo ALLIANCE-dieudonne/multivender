@@ -1,20 +1,20 @@
 const nodemailer = require("nodemailer");
 
-// Create a reusable transporter object outside the function
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: process.env.SMTP_HOST,
+  port: process.env.SMTP_PORT,
   secure: true,
   debug: true,
-  host: process.env.SMPT_HOST,
-  port: process.env.SMPT_PORT,
-  service: process.env.SMPT_SERVICE,
+  service: process.env.SMTP_SERVICE,
   auth: {
-    user: process.env.SMPT_MAIL,
-    pass: process.env.SMPT_PASSWORD,
+    user: process.env.SMTP_MAIL,
+    pass: process.env.SMTP_PASSWORD,
+  },
+  tls: {
+    rejectUnauthorized: false,
   },
 });
 
-// Wrap the sendMail function in a try-catch block to handle errors
 const sendMail = async (options) => {
   try {
     const mailOptions = {
@@ -24,14 +24,12 @@ const sendMail = async (options) => {
       text: options.message,
     };
 
-    // Use async/await for sending the email
     await transporter.sendMail(mailOptions);
-
     console.log("Email sent successfully.");
-    return true; // Return true to indicate success if needed
+    return true;
   } catch (error) {
     console.error("Error sending email:", error);
-    return false; // Return false to indicate failure if needed
+    return false;
   }
 };
 
