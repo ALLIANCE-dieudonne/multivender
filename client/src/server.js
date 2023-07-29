@@ -1,3 +1,3 @@
-export const server = "http://localhost:5400/api/v2";
+export const server = "https://e-market-backend.onrender.com/api/v2";
 
 
