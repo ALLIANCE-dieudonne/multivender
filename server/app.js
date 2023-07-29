@@ -7,7 +7,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: ["https://e-market-2hos.onrender.com"],
+    origin: ["https://e-market-oxj75825n-alliance-dieudonne.vercel.app/"],
     credentials: true,
   })
 );
