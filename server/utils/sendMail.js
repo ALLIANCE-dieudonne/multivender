@@ -1,8 +1,9 @@
-
 const nodemailer = require("nodemailer");
 
 // Create a reusable transporter object outside the function
 const transporter = nodemailer.createTransport({
+  service: "gmail",
+  secure: true,
   host: process.env.SMPT_HOST,
   port: process.env.SMPT_PORT,
   service: process.env.SMPT_SERVICE,
