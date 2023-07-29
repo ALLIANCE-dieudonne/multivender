@@ -7,7 +7,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["https://e-market-2hos.onrender.com"],
     credentials: true,
   })
 );
