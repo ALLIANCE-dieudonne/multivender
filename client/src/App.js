@@ -85,7 +85,7 @@ const App = () => {
         <title>eMarket</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      {stripeApikey && (
+      {stripeApikey && ( 
         <Elements stripe={loadStripe(stripeApikey)}>
           <Routes>
             <Route
