@@ -7,7 +7,7 @@ import { addTocart } from "../../redux/actions/cart";
 import { toast } from "react-toastify";
 
 const EventCard = ({ active, data }) => {
-  console.log(data)
+  console.log(data);
   const { cart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ const EventCard = ({ active, data }) => {
         toast.success("Item added to cart successfully!");
       }
     }
-  }
+  };
 
   return (
     <div
@@ -32,8 +32,12 @@ const EventCard = ({ active, data }) => {
         active ? "unset" : "mb-12"
       } lg:flex p-2`}
     >
-      <div className="w-full lg:w-[50%] m-auto">
-        <img src={`${data.images[0]?.url}`} alt="" />
+      <div className="w-full 800px:w-[50%] m-auto">
+        <img
+          src={`${data.images[0]?.url}`}
+          alt=""
+          className="w-[70%] object-contain"
+        />
       </div>
       <div className="w-full lg:w-[50%] flex flex-col justify-center">
         <h2 className={`${styles.productTitle}`}>{data.name}</h2>
@@ -57,7 +61,12 @@ const EventCard = ({ active, data }) => {
           <Link to={`/product/${data._id}?isEvent=true`}>
             <div className={`${styles.button} text-[#fff]`}>See Details</div>
           </Link>
-          <div className={`${styles.button} text-[#fff] ml-5`} onClick={() => addToCartHandler(data)}>Add to cart</div>
+          <div
+            className={`${styles.button} text-[#fff] ml-5`}
+            onClick={() => addToCartHandler(data)}
+          >
+            Add to cart
+          </div>
         </div>
       </div>
     </div>
