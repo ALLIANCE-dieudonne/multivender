@@ -7,7 +7,7 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: ["https://e-market-three.vercel.app"],
+    origin: ["https://emarket-jet.vercel.app"],
     credentials: true,
   })
 );
