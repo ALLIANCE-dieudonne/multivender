@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
 
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -76,16 +75,12 @@ const App = () => {
     Store.dispatch(getAllProducts());
     Store.dispatch(getAllEvents());
     getStripeApikey();
+    document.title = "ShopO"
   }, []);
 
   return (
     <BrowserRouter>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>eMarket</title>
-        <link rel="canonical" href="http://mysite.com/example" />
-      </Helmet>
-      {stripeApikey && ( 
+      {stripeApikey && (
         <Elements stripe={loadStripe(stripeApikey)}>
           <Routes>
             <Route
