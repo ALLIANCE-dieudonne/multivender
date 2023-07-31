@@ -229,7 +229,7 @@ export const navItems = [
       title: "Gifts",
       subTitle: "",
       image_Url:
-        "https://cdn.create.vista.com/api/media/small/14850833/stock-photo-red-gift-box",
+        "https://img.freepik.com/free-vector/3d-gift-box-wrapped-golden-ribbon_173207-1906.jpg?t=st=1690799936~exp=1690800536~hmac=70d68eb79462436a8d183846f9e084549906257acbb5d3bf31e8beb2c35155b6",
     },
     {
       id: 7,
