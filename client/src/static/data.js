@@ -229,7 +229,7 @@ export const navItems = [
       title: "Gifts",
       subTitle: "",
       image_Url:
-        "https://img.freepik.com/free-vector/3d-gift-box-wrapped-golden-ribbon_173207-1906.jpg?t=st=1690799936~exp=1690800536~hmac=70d68eb79462436a8d183846f9e084549906257acbb5d3bf31e8beb2c35155b6",
+        "https://banner2.cleanpng.com/20171128/b88/white-dotted-gift-box-with-png-clipart-image-5a1d5a16641bc6.1657526515118730464101.jpg",
     },
     {
       id: 7,
