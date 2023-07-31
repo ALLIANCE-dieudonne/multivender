@@ -229,7 +229,7 @@ export const navItems = [
       title: "Gifts",
       subTitle: "",
       image_Url:
-        "https://securecdn.pymnts.com/wp-content/uploads/2014/11/Gifts-Photo-700x489.jpg",
+        "https://cdn.create.vista.com/api/media/small/14850833/stock-photo-red-gift-box",
     },
     {
       id: 7,
