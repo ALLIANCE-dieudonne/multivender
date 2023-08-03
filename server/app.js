@@ -18,8 +18,15 @@ app.use("/test", (req, res) => {
   res.send("Hello world!");
 });
 
-app.use(express.urlencoded({ extended: true }));
-// config
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: true,
+    parameterLimit: "100000",
+    limit: "500mb",
+  })
+);
+
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({
     path: "config/.env",
@@ -53,4 +60,3 @@ app.use("/api/v2/withdraw", withdraw);
 app.use(ErrorHandler);
 
 module.exports = app;
-
