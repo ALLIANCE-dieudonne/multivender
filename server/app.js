@@ -12,17 +12,18 @@ app.use(
   })
 );
 
-app.use(express.json());
-app.use(cookieParser());
+app.use(bodyParser.json({ limit: "50mb" }));
 
-app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
     extended: true,
-    parameterLimit: "100000",
-    limit: "500mb",
+    limit: "50mb",
+    parameterLimit: 50000,
   })
 );
+
+app.use(express.json());
+app.use(cookieParser());
 
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({
