@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addTocart } from "../../redux/actions/cart";
 import { toast } from "react-toastify";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const EventCard = ({ active, data }) => {
   console.log(data);
@@ -28,15 +29,15 @@ const EventCard = ({ active, data }) => {
 
   return (
     <div
-      className={`w-full block bg-white rounded-lg ${
+      className={`w-full block bg-white rounded-lg mx-3 ${
         active ? "unset" : "mb-12"
       } lg:flex p-2`}
     >
-      <div className="w-full 800px:w-[50%] m-auto">
-        <img
+      <div className="w-full 800px:w-[50%] ">
+        <LazyLoadImage
           src={`${data.images[0]?.url}`}
           alt=""
-          className="w-[70%] object-contain"
+          className="w-[60%] object-contain"
         />
       </div>
       <div className="w-full lg:w-[50%] flex flex-col justify-center">

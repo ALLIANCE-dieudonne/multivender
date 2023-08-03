@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+
 import {
   AiFillHeart,
   AiOutlineHeart,
@@ -36,7 +38,7 @@ const ProductDetails = ({ data }) => {
     } else {
       setClick(false);
     }
-  }, [data, wishlist]);
+  }, [data, wishlist, dispatch]);
 
   const incrementCount = () => {
     setCount(count + 1);
@@ -85,10 +87,9 @@ const ProductDetails = ({ data }) => {
       0
     );
 
-  const avg =  totalRatings / totalReviewsLength || 0;
+  const avg = totalRatings / totalReviewsLength || 0;
 
   const averageRating = avg.toFixed(2);
-
 
   const handleMessageSubmit = async () => {
     if (isAuthenticated) {
@@ -119,7 +120,7 @@ const ProductDetails = ({ data }) => {
           <div className="w-full py-5">
             <div className="block w-full 800px:flex">
               <div className="w-full 800px:w-[50%]">
-                <img
+                <LazyLoadImage
                   src={`${data && data.images[select]?.url}`}
                   alt=""
                   className="w-[70%] object-contain"
@@ -132,7 +133,7 @@ const ProductDetails = ({ data }) => {
                           select === 0 ? "border" : "null"
                         } cursor-pointer`}
                       >
-                        <img
+                        <LazyLoadImage
                           src={`${i?.url}`}
                           alt=""
                           className="h-[200px] overflow-hidden mr-3 mt-3"
@@ -207,7 +208,7 @@ const ProductDetails = ({ data }) => {
                 </div>
                 <div className="flex items-center pt-8">
                   <Link to={`/shop/preview/${data?.shop._id}`}>
-                    <img
+                    <LazyLoadImage
                       src={`${data?.shop?.avatar?.url}`}
                       alt=""
                       className="w-[50px] h-[50px] rounded-full mr-2"
@@ -313,7 +314,7 @@ const ProductDetailsInfo = ({
           {data &&
             data.reviews.map((item, index) => (
               <div className="w-full flex my-2">
-                <img
+                <LazyLoadImage
                   src={`${item.user.avatar?.url}`}
                   alt=""
                   className="w-[50px] h-[50px] rounded-full"
@@ -341,7 +342,7 @@ const ProductDetailsInfo = ({
           <div className="w-full 800px:w-[50%]">
             <Link to={`/shop/preview/${data.shop._id}`}>
               <div className="flex items-center">
-                <img
+                <LazyLoadImage
                   src={`${data?.shop?.avatar?.url}`}
                   className="w-[50px] h-[50px] rounded-full"
                   alt=""

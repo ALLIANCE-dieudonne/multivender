@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { brandingData, categoriesData } from "../../../static/data";
 import styles from "../../../styles/styles";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Categories = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const Categories = () => {
                   onClick={() => handleSubmit(i)}
                 >
                   <h5 className={`text-[18px] leading-[1.3]`}>{i.title}</h5>
-                  <img
+                  <LazyLoadImage
                     src={i.image_Url}
                     className="w-[120px] object-cover"
                     alt=""
