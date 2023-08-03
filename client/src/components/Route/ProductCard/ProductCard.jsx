@@ -70,9 +70,9 @@ const ProductCard = ({ data, isEvent }) => {
               : `/product/${data._id}`
           }`}
         >
-          <LazyLoadImage
+          <img
             src={`${data.images && data.images[0]?.url}`}
-            alt="image"
+            alt=""
             className="w-full h-[170px] object-contain"
             effect="blur"
           />
