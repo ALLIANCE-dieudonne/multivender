@@ -14,13 +14,10 @@ app.use(
 
 app.use(express.json());
 app.use(cookieParser());
-app.use("/test", (req, res) => {
-  res.send("Hello world!");
-});
 
-app.use(express.json());
+app.use(bodyParser.json());
 app.use(
-  express.urlencoded({
+  bodyParser.urlencoded({
     extended: true,
     parameterLimit: "100000",
     limit: "500mb",
