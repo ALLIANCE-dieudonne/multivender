@@ -15,7 +15,7 @@ const EventsPage = () => {
         <div>
           <Header activeHeading={4} />
 
-          <div className="w-[90%] flex justify-center">
+          <div className="w-[90%] flex justify-center flex-col flex-wrap">
             {allEvents.map((event) => (
               <EventCard key={event._id} active={true} data={event} />
             ))}{" "}
