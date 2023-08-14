@@ -32,16 +32,42 @@ const Header = ({ activeHeading }) => {
   const [openWishlist, setOpenWishlist] = useState(false);
   const [open, setOpen] = useState(false);
 
-  const handleSearchChange = (e) => {
+   const handleSearch = (e) => {
     const term = e.target.value;
     setSearchTerm(term);
 
     const filteredProducts =
       allProducts &&
-      allProducts.filter((product) =>
-        product.name.toLowerCase().includes(term.toLowerCase())
-      );
+      allProducts
+        .filter(
+          (product) =>
+            term && product.name.toLowerCase().includes(term.toLowerCase())
+        )
+        .sort((a, b) => {
+          const nameA = a.name.toLowerCase();
+          const nameB = b.name.toLowerCase();
+
+          if (
+            nameA.startsWith(term.toLowerCase()) &&
+            !nameB.startsWith(term.toLowerCase())
+          ) {
+            return -1;
+          }
+          if (
+            !nameA.startsWith(term.toLowerCase()) &&
+            nameB.startsWith(term.toLowerCase())
+          ) {
+            return 1;
+          }
+          return 0;
+        });
+
     setSearchData(filteredProducts);
+  };
+
+  const handleBlur = () => {
+    setSearchData(null);
+    setSearchTerm("");
   };
 
   window.addEventListener("scroll", () => {
@@ -65,12 +91,13 @@ const Header = ({ activeHeading }) => {
             </Link>
           </div>
           {/* search box */}
+           {/* search box */}
           <div className="w-[50%] relative">
             <input
               type="text"
               placeholder="Search Product..."
               value={searchTerm}
-              onChange={handleSearchChange}
+              onChange={handleSearch}
               className="h-[40px] w-full px-2 border-[#3957db] border-[2px] rounded-md"
             />
             <AiOutlineSearch
@@ -78,11 +105,11 @@ const Header = ({ activeHeading }) => {
               className="absolute right-2 top-1.5 cursor-pointer"
             />
             {searchData && searchData.length !== 0 ? (
-              <div className="absolute min-h-[30vh] bg-slate-50 shadow-sm-2 z-[9] p-4">
+              <div className="absolute h-min w-full bg-slate-50 shadow-sm-2 z-[9] p-4">
                 {searchData &&
                   searchData.map((i, index) => {
                     return (
-                      <Link to={`/product/${i._id}`}>
+                      <Link to={`/product/${i._id}`} onClick={handleBlur}>
                         <div className="w-full flex items-start-py-3">
                           <img
                             src={`${i.images[0]?.url}`}
@@ -273,7 +300,7 @@ const Header = ({ activeHeading }) => {
                   placeholder="Search Product..."
                   className="h-[40px] w-full px-2 border-[#3957db] border-[2px] rounded-md"
                   value={searchTerm}
-                  onChange={handleSearchChange}
+                  onChange={handleSearch}
                 />
                 {searchData && (
                   <div className="absolute bg-[#fff] z-10 shadow w-full left-0 p-3">
@@ -282,7 +309,7 @@ const Header = ({ activeHeading }) => {
 
                       const Product_name = d.replace(/\s+/g, "-");
                       return (
-                        <Link to={`/product/${Product_name}`}>
+                        <Link to={`/product/${Product_name}`} onClick={handleBlur}>
                           <div className="flex items-center">
                             <img
                               src={i.image_Url[0]?.url}
