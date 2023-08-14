@@ -15,9 +15,6 @@ const ActivationPage = () => {
           .post(`${server}/user/activation`, {
             activation_token,
           })
-          .then((res) => {
-            console.log(res);
-          })
           .catch((err) => {
             setError(true);
           });

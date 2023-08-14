@@ -14,9 +14,13 @@ const EventsPage = () => {
       ) : (
         <div>
           <Header activeHeading={4} />
-          {allEvents.map((event) => (
-            <EventCard key={event._id} active={true} data={event} />
-          ))}{" "}
+
+          <div className="w-[90%]">
+            {allEvents.map((event) => (
+              <EventCard key={event._id} active={true} data={event} />
+            ))}{" "}
+          </div>
+
           {allEvents.length === 0 && (
             <div className="h-[50vh] w-full">
               <h1 className="text-center font-[500] text-[30px] pt-20 ">

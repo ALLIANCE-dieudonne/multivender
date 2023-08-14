@@ -8,7 +8,6 @@ import { toast } from "react-toastify";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const EventCard = ({ active, data }) => {
-  console.log(data);
   const { cart } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
