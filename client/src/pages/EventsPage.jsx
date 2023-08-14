@@ -15,7 +15,7 @@ const EventsPage = () => {
         <div>
           <Header activeHeading={4} />
 
-          <div className="w-[90%] ml-3">
+          <div className="w-full">
             {allEvents.map((event) => (
               <EventCard key={event._id} active={true} data={event} />
             ))}{" "}
